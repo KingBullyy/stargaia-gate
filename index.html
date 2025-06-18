@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>STARGAIA Orbit Mapper</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      background-color: #000814;
+      margin: 0;
+      font-family: sans-serif;
+      color: #d1ffe2;
+      text-align: center;
+    }
+    svg {
+      display: block;
+      margin: auto;
+      background-color: #010b1a;
+    }
+    h1 {
+      padding: 1em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🛰️ STARGAIA Mirror Node Orbit Map</h1>
+  <svg width="800" height="600"></svg>
+
+  <script>
+    // Sample static node data
+    const nodes = [
+      { id: "Node-01", x: 100, y: 200 },
+      { id: "Node-02", x: 300, y: 150 },
+      { id: "Node-03", x: 500, y: 250 },
+      { id: "Node-04", x: 200, y: 400 },
+      { id: "Node-05", x: 600, y: 350 },
+    ];
+
+    const svg = d3.select("svg");
+
+    svg.selectAll("circle")
+      .data(nodes)
+      .enter()
+      .append("circle")
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y)
+      .attr("r", 16)
+      .attr("fill", "#21f3b5");
+
+    svg.selectAll("text")
+      .data(nodes)
+      .enter()
+      .append("text")
+      .attr("x", d => d.x + 20)
+      .attr("y", d => d.y + 5)
+      .text(d => d.id)
+      .attr("fill", "#d1ffe2")
+      .attr("font-size", "14px");
+  </script>
+</body>
+</html>
